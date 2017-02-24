@@ -1,6 +1,6 @@
 var config = {
   db: {
-    url: 'mongodb://localhost/sport'
+    url: 'mongodb://localhost/todo'
   }
 };
 
