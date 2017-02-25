@@ -1,7 +1,7 @@
 {
-  "name": "node-todo",
+  "name": "node-express-todo",
   "version": "1.0.0",
-  "description": "Todo BE on NodeJS",
+  "description": "Todo BE on NodeJS and Express",
   "main": "index.js",
   "scripts": {
     "test": "mocha test",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wchavarria03/node-todo.git"
+    "url": "git+https://github.com/wchavarria03/node-express-todo.git"
   },
   "keywords": [
     "node",
@@ -18,11 +18,13 @@
   "author": "wchavarria03@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wchavarria03/node-todo/issues"
+    "url": "https://github.com/wchavarria03/node-express-todo/issues"
   },
-  "homepage": "https://github.com/wchavarria03/node-todo#readme",
+  "homepage": "https://github.com/wchavarria03/node-express-todo#readme",
   "dependencies": {
+    "body-parser": "^1.16.1",
     "express": "^4.14.1",
+    "jsonfile": "^2.4.0",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
