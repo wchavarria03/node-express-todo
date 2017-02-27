@@ -1,0 +1,16 @@
+{
+  "title": "new todo",
+  "description": "describes properties required to create a new todo",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "todo description"
+    },
+    "isDone": {
+      "type": "boolean",
+      "description": "todo is done"
+    }
+  },
+  "required": ["description", "isDone"]
+}

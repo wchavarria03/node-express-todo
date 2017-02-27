@@ -15,8 +15,10 @@ exports.get = function(req, res, next) {
 
 exports.post = function(req, res, next) {
   var newTodo = req.body;
-  var data = fileData;
-  data.todos.push(newTodo);;
+  
+  //TODO Change this by something more reliable
+  req.body.id = Date.now();
+  fileData.todos.push(newTodo);;
   res.json(newTodo);
   
   jsonfile.writeFile(file, data, function (err) {

@@ -1,5 +1,5 @@
 var router = require('express').Router();
 
-router.use('/todo', require('./todo'));
+router.use('/todos', require('./todos'));
 
 module.exports = router;
