@@ -3,6 +3,7 @@ var jsonfile = require('jsonfile');
 var fileData = require('../../data/db.json');
 var path = require('path');
 var file = path.resolve(__dirname + '/../../data/db.json');
+var customError = require('../../error/customError');
 
 exports.params = function (req, res, next, id) {
   req.todoId = id;
@@ -10,7 +11,7 @@ exports.params = function (req, res, next, id) {
 };
 
 exports.get = function(req, res, next) {
-  res.json(fileData);
+  res.status(200).json(fileData);
 };
 
 exports.post = function(req, res, next) {
@@ -19,18 +20,20 @@ exports.post = function(req, res, next) {
   //TODO Change this by something more reliable
   req.body.id = Date.now();
   fileData.todos.push(newTodo);;
-  res.json(newTodo);
-  
-  jsonfile.writeFile(file, data, function (err) {
+  jsonfile.writeFile(file, fileData, function (err) {
     if (err) {
-      console.error(err)
+      return next(new Error(err));
     }
+    res.status(201).json(newTodo);
   });
 };
 
 exports.getOne = function(req, res, next) {
   var todo = lodash.find(fileData.todos, {id: parseInt(req.todoId)});
-  res.json(todo);
+  if (!todo) {
+    return next(new customError(1));
+  }
+  res.status(200).json(todo);
 };
 
 exports.delete = function(req, res, next) {
@@ -39,8 +42,8 @@ exports.delete = function(req, res, next) {
 
   jsonfile.writeFile(file, fileData, function (err) {
     if (err) {
-      console.error(err)
+      return next(new Error('Error deleting todo'));
     }
+    res.status(204).send();
   });
-  res.json('Deleted todo/' + req.todoId);
 };
